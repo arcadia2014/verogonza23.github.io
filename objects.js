@@ -4,7 +4,7 @@ constphone = {
     ram: '4GB',
     add: 'ADD',
     screen: '260gb',
-    model: 'Y',
+    model: 'Y', 
     funtional: true,
     damage: false,
 };
