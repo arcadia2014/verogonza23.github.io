@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piedra, Papel y Tijeras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #f1faef;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            margin: 15px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #ea92e4;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #2783e6;
+            transform: scale(1.05);
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            padding: 20px;
+            background-color: #e1e1f9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #c57fe8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .back-btn:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        .choices {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .choice-btn img {
+            width: 100px; 
+            height: 100px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .choice-btn img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Piedra, Papel o Tijeras</h1>
+    </div>
+
+    <div class="choices">
+        <div class="choice-btn" onclick="play('piedra')">
+            <img src="./img/piedra.jpg" alt="Piedra">
+        </div>
+        <div class="choice-btn" onclick="play('papel')">
+            <img src="./img/papel.jpg" alt="Papel">
+        </div>
+        <div class="choice-btn" onclick="play('tijeras')">
+            <img src="./img/tijeras.png" alt="Tijeras">
+        </div>
+    </div>
+    <div class="result" id="resultado"></div>
+
+    <a href="./index.html" class="back-btn">Regresar</a>
+
+    <script>
+        const generarElección = () => {
+            const choices = ["piedra", "papel", "tijeras"];
+            const indice = Math.floor(Math.random() * 3);
+            return choices[indice];
+        }
+
+        const play = (choiceUser) => {
+            choiceUser = choiceUser.toLowerCase(); 
+
+            const choiceMaq = generarElección();
+            const resultado = ganador(choiceUser, choiceMaq);
+
+            document.getElementById('resultado').innerHTML =
+             `
+                Usuario eligió: ${choiceUser}<br>
+                Computador eligió: ${choiceMaq}<br>
+                Resultado: ${resultado}`;
+        }
+
+        const ganador = (choiceUser, choiceMaq) => {
+            if (choiceUser === choiceMaq) {
+                return "Empate";
+            }
+
+            switch (choiceUser) {
+                case "piedra":
+                    return choiceMaq === "tijeras" ? "Ganaste" : "Perdiste";
+                case "papel":
+                    return choiceMaq === "piedra" ? "Ganaste" : "Perdiste";
+                case "tijeras":
+                    return choiceMaq === "papel" ? "Ganaste" : "Perdiste";
+                default:
+                    return "Opción inválida";
+            }
+        }
+    </script>
+</body>
+</html>

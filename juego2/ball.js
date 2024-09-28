@@ -9,29 +9,29 @@ const eightBall = () => {
     const num = Math.floor(Math.random() * 8);
     switch(num){
         case 0:
-            message.innerText = "no se tu"
+            message.innerText = "hablale"
             break;
         case 1:
-            message.innerText = "apoco sy"
-            break;
-        case 2:
-            message.innerText = "nel"
-            break;
-        case 3:
-            message.innerText = "soltar amige"
-            break;
-        case 4:
             message.innerText = "more?"
             break;
+        case 2:
+            message.innerText = "dile ño"
+            break;
+        case 3:
+            message.innerText = "nel"
+            break;
+        case 4:
+            message.innerText = "gpi"
+            break;
         case 5:
-            message.innerText = "dile que si"
+            message.innerText = "tu puedes"
             break;
         case 6:
-            message.innerText = "dile que no"
+            message.innerText = "te amo"
             break;
         default:
-            console.log("No válido");
+            console.log("Nosta");
     }
 }
 
-ball.addEventListener('click', eightBall); 
+ball.addEventListener('click', eightBall);
